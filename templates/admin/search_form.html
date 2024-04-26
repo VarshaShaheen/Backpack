@@ -1,0 +1,12 @@
+{% extends 'admin/search_form.html' %}
+
+{% block search %}
+<div style="display: flex; align-items: center;">
+    <select name="search_type" style="margin-right: 5px;">
+        <option value="all">All</option>
+        <option value="company_name" {% if cl.params.search_type == 'company_name' %}selected{% endif %}>Company Name</option>
+        <option value="certificate" {% if cl.params.search_type == 'certificate' %}selected{% endif %}>Incorporation Certificate</option>
+    </select>
+    {{ block.super }}
+</div>
+{% endblock %}
