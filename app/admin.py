@@ -1,13 +1,25 @@
 from django.contrib import admin
+from django.contrib.admin import AdminSite
 from .models import CompanyDetail, CorporateDocument
+
+
+class BackPackAdminSite(AdminSite):
+    site_header = 'BackPack'
+    site_title = 'BackPack'
+    index_title = 'BackPack'
+
+
+admin_site = BackPackAdminSite(name='backpack')
+
 
 class CorporateDocumentInline(admin.TabularInline):
     model = CorporateDocument
-    extra = 1  # Defines the number of extra forms to display
+    extra = 1
     fields = [
         'document_file', 'document_name', 'document_number', 'issue_date',
         'expiry_date', 'department_portal', 'portal_access'
     ]
+
 
 class CompanyDetailAdmin(admin.ModelAdmin):
     list_display = [
@@ -26,5 +38,6 @@ class CompanyDetailAdmin(admin.ModelAdmin):
         'vat_submission_period'
     ]
     inlines = [CorporateDocumentInline]  # Include the inline definition here
+
 
 admin.site.register(CompanyDetail, CompanyDetailAdmin)
