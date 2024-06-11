@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class CompanyDetail(models.Model):
     company_name_en = models.CharField(max_length=255)
     company_name_ar = models.CharField(max_length=255)
@@ -26,3 +25,17 @@ class CompanyDetail(models.Model):
 
     def __str__(self):
         return self.company_name_en
+
+class CorporateDocument(models.Model):
+    company = models.ForeignKey(CompanyDetail, on_delete=models.CASCADE, related_name='documents')
+    document_file = models.FileField(upload_to='corporate_documents/')
+    document_name = models.CharField(max_length=255)
+    document_number = models.CharField(max_length=100)
+    issue_date = models.DateField()
+    expiry_date = models.DateField()
+    department_portal = models.CharField(max_length=255)
+    portal_access = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.document_name} ({self.document_number})"
+
