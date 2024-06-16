@@ -1,13 +1,6 @@
 from django.contrib import admin
-from django.contrib.admin import AdminSite
 from .models import CompanyDetail, CorporateDocument
 
-class BackPackAdminSite(AdminSite):
-    site_header = 'BackPack Administration'
-    site_title = 'BackPack Admin'
-    index_title = 'BackPack Site Administration'
-
-admin_site = BackPackAdminSite(name='backpack')
 
 class CorporateDocumentInline(admin.TabularInline):
     model = CorporateDocument
@@ -16,6 +9,7 @@ class CorporateDocumentInline(admin.TabularInline):
         'document_file', 'document_name', 'document_number', 'issue_date',
         'expiry_date', 'department_portal', 'portal_access'
     ]
+
 
 class CompanyDetailAdmin(admin.ModelAdmin):
     list_display = [
@@ -35,5 +29,6 @@ class CompanyDetailAdmin(admin.ModelAdmin):
     ]
     inlines = [CorporateDocumentInline]
 
-# Register the admin class with the new admin site
-admin_site.register(CompanyDetail, CompanyDetailAdmin)
+
+# Register the models with the default admin site
+admin.site.register(CompanyDetail, CompanyDetailAdmin)
