@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class CompanyDetail(models.Model):
     company_name_en = models.CharField(max_length=255)
     company_name_ar = models.CharField(max_length=255)
@@ -26,6 +27,7 @@ class CompanyDetail(models.Model):
     def __str__(self):
         return self.company_name_en
 
+
 class CorporateDocument(models.Model):
     company = models.ForeignKey(CompanyDetail, on_delete=models.CASCADE, related_name='documents')
     document_file = models.FileField(upload_to='corporate_documents/')
@@ -38,4 +40,3 @@ class CorporateDocument(models.Model):
 
     def __str__(self):
         return f"{self.document_name} ({self.document_number})"
-
