@@ -1,3 +1,4 @@
 .venv
 .idea
 app/migrations
+Backpack/settings.py
