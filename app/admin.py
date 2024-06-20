@@ -7,8 +7,8 @@ class CorporateDocumentInline(admin.TabularInline):
     extra = 1
     fields = [
         'document_file', 'document_name', 'document_number', 'issue_date',
-        'expiry_date', 'department_portal', 'portal_access', 'username',
-        'password', 'otp_mobile', 'remarks'
+        'expiry_date', 'department_portal', 'portal_access', 'document_portal_name','username',
+        'password', 'otp_mobile', 'remarks',
     ]
 
 
