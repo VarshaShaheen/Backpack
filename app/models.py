@@ -62,7 +62,7 @@ class CorporateDocument(models.Model):
     expiry_date = models.DateField()
     department_portal = models.CharField(max_length=255)
     portal_access = models.CharField(max_length=255)
-    document_portal_name = models.CharField(max_length=100, choices=PORTAL_ACCESS_CHOICES)
+    document_portal_name = models.CharField(max_length=100, choices=PORTAL_ACCESS_CHOICES, blank=True, null=True)
     username = models.CharField(max_length=100, blank=True, null=True)
     password = models.CharField(max_length=100, blank=True, null=True)
     otp_mobile = models.CharField(max_length=20, blank=True, null=True)
